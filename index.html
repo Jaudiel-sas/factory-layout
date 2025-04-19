@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Layout Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <h2>Quick Layout</h2>
+            <div class="layout-controls">
+                <label for="layout-name">Layout Name</label>
+                <input type="text" id="layout-name" placeholder="Propposal 1">
+
+                <button onclick="saveLayout()" class="icon-button">
+                    <span class= "material-icons">save</span>
+                    <span>Save</span>
+                </button>
+                
+                <button onclick="loadLayout()" class="icon-button">
+                    <span class="material-icons">folder_open</span>
+                    <span>Open</span>
+                </button>
+
+                <button onclick="clearLayout()" class="icon-button">
+                    <span class="material-icons">delete</span>
+                    <span>Clear</span>
+                </button>
+            </div>
+            <h3>Add Elements</h3>
+            <div class="add-buttons">
+
+                <button onclick="addElement('machine')" class="icon-button">
+                    <span class="material-icons">inbox_customize</span>
+                    <span>Machine</span>
+                </button>
+
+                <button onclick="addElement('station')" class="icon-button">
+                    <span class="material-icons">video_label</span>
+                    <span>Station</span>
+                </button>
+
+                <button onclick="addElement('conveyor')" class="icon-button">
+                    <span class="material-icons">link</span>
+                    <span>Conveyor</span>
+                </button>
+
+                <button onclick="addElement('operator')" class="icon-button">
+                    <span class="material-icons">person_add</span>
+                    <span>Operator</span>
+                </button>
+
+                <button onclick="addElement('robot')" class="icon-button">
+                    <span class="material-icons">precision_manufacturing</span>
+                    <span>Robot</span>
+                </button>
+
+                <button onclick="addElement('forklift')" class="icon-button">
+                    <span class="material-icons">forklift</span>
+                    <span>Forklift</span>
+                </button>
+
+                <button onclick="addElement('pallet')" class="icon-button">
+                    <span class="material-icons">pallet</span>
+                    <span>Pallet</span>
+                </button>
+
+                <button onclick="addElement('cart')" class="icon-button">
+                    <span class="material-icons">trolley</span>
+                    <span>Cart</span>
+                </button>
+
+            </div>
+
+            <button onclick="printLayout()" class="icon-button">
+                <span class="material-icons">picture_as_pdf</span>
+                <span>Print</span>
+            </button>
+
+        </div>
+
+        <!-- Right Quadrant -->
+        <div class="quadrant" id="quadrant"></div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

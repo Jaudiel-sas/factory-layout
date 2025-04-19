@@ -1,0 +1,235 @@
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.left-panel {
+    width: 130px;
+    background-color: #cdcaca;
+    padding: 20px;
+    border-right: 1px transparent;
+    overflow-y: auto;
+}
+
+.left-panel h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #323232;
+    font-weight: 500;
+}
+
+.left-panel h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #323232;
+    font-weight: 500;
+}
+
+.layout-controls {
+    margin-bottom: 20px;
+}
+
+.layout-controls input {
+    width: 110%; /* This matches the button width */
+    box-sizing: border-box; /* This ensures padding doesn't add to width */
+    padding: 8px; /* Match button padding */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.left-panel button {
+    display:flex;
+    width: 110%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #222121;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.left-panel button:hover {
+    background-color: #666869;
+}
+
+.quadrant {
+    flex: 1;
+    background-color: white;
+    position: relative;
+    overflow: auto;
+}
+
+/* Element Styles */
+.element {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+    cursor: move;
+    background: transparent;
+    min-width: 5px;
+    min-height: 5px;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.element .material-icons {
+    font-size: 32px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.element.selected {
+    outline: 2px dashed #00ff88;
+    outline-offset: 2px;
+}
+
+.element input {
+    width: 80%;
+    text-align: center;
+    margin-top: 5px;
+    padding: 2px 4px;
+    border: 1px solid #e0e0e0;  /* Lighter border color */
+    background-color: rgba(255, 255, 255, 0.7);  /* Semi-transparent background */
+    color: #666;  /* Lighter text color */
+    font-size: 12px;  /* Smaller font size */
+    outline: none; 
+}
+
+.element input:focus {
+    border-color: #ccc;  /* Slightly darker border when focused */
+    background-color: rgba(255, 255, 255, 0.9);  /* More opaque when focused */
+}
+
+.machine { background-color: #a3e4d7;height: 72px;width: 140;}
+.station { background-color: #f9e79f; height: 72px;width: 44px;}
+.conveyor { 
+    background-color: #d1d4d1;
+    width: 180px; 
+    height: 30px;
+    background-image: 
+        /* Vertical lines */
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(255,255,255,0.1) 4px,
+            rgba(255,255,255,0.1) 5px
+        ),
+        /* Horizontal lines */
+        repeating-linear-gradient(0deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(255,255,255,0.1) 4px,
+            rgba(255,255,255,0.1) 5px
+        ),
+        /* Diagonal pattern */
+        repeating-linear-gradient(45deg,
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.05) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+    background-size: 10px 10px, 10px 10px, 10px 10px;
+    border: 1px solid #2c3e50;
+    position: relative;
+    
+}
+
+/* Add hover effect to make pattern look like it's moving */
+.conveyor:hover {
+    animation: conveyorMove 0.8s linear infinite;
+}
+
+/* Animation for conveyor movement */
+@keyframes conveyorMove {
+    0% {
+        background-position: 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 10px 0, 0 0, 10px 10px;
+    }
+}
+
+/* Add metallic effect overlay */
+.conveyor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg, 
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0.05) 20%,
+        rgba(255,255,255,0) 50%,
+        rgba(255,255,255,0.05) 80%,
+        rgba(255,255,255,0.1) 100%
+    );
+    pointer-events: none;
+}
+
+.operator { background-color: transparent; border: none; height: 50; width: 42; padding: 0;/*border-radius: 50%; width: 50px; height: 50px; */}
+.operator .material-icons { font-size: 50px; color:#323232}
+.robot { background-color: #d2b4de; width:90px; height: 90px;}
+.forklift { background-color: #5d6d7e; width:90px; height: 90px;}
+.pallet { background-color: #e59866; height: 90px; width:90px;}
+.cart { background-color: #82e0aa; width: 44px;height: 72px;}
+
+/* Resizable handle */
+.resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    cursor: se-resize;
+}
+
+/*Icon button styles*/
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This will create space between icon and text */
+    width: 70%; /* Keep the original button width */
+    padding: 10px 15px;   
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.icon-button .material-icons {
+    
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+    
+
+}
+
+.icon-button span:last-child {
+    flex: 1;
+    text-align: center; /* Centers the text in the remaining space */
+    
+}
